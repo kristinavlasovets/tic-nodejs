@@ -1,7 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import {StreamChat} from 'stream-chat';
 import {v4 as uuidv4} from 'uuid';
+
+dotenv.config();
 const app = express();
 
 app.use(cors());
@@ -21,6 +24,6 @@ app.post('/signin', (req, res) => {
 		res.json(e);
 	}
 });
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
 	console.log('server is running on port 3001');
 });
